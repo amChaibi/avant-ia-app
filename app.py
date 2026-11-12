@@ -90,20 +90,24 @@ html, body, .stApp, .stMarkdown, button, input, select, textarea, label, p {font
 .meta b {display: block; font-family: var(--title); font-size: 1.6rem; color: var(--ink); font-weight: 700;}
 
 /* Sommaire */
-.part {display: grid; grid-template-columns: 70px 1fr; gap: 1rem; margin-top: 2.6rem; align-items: end;
-       padding-bottom: .8rem; border-bottom: 1px solid var(--line);}
-.part .roman {font-family: var(--title); font-weight: 800; font-size: 2.2rem; color: var(--amber); line-height: 1;
-              letter-spacing: .02em;}
-.part .t {font-family: var(--title); font-weight: 700; font-size: 1.3rem; color: var(--ink);}
-.part .l {font-size: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .1em;}
-.row-tag {font-size: .9rem; color: var(--muted); padding: .2rem 0 0 .2rem; line-height: 1.45;}
+.part {display: grid; grid-template-columns: 70px 1fr; gap: 1rem; margin: 0 0 1.2rem; align-items: end;}
+.part .roman {font-family: var(--title); font-weight: 800; font-size: 2.6rem; color: var(--amber); line-height: 1;}
+.part .t {font-family: var(--title); font-weight: 700; font-size: 1.35rem; color: var(--ink); line-height: 1.25;}
+.part .l {font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .14em; margin-bottom: .2rem;}
+.sep {display: flex; align-items: center; gap: 1.2rem; margin: 4.5rem auto 4rem; max-width: 420px;
+      color: var(--amber); font-size: .9rem; opacity: .8;}
+.sep span {flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--line), transparent);}
+.sep.first {margin-top: 4rem;}
+.row-tag {font-size: .86rem; color: var(--muted); opacity: .75; padding: .75rem 0 0 .2rem; line-height: 1.45;}
 
-/* Lignes du sommaire = boutons */
- [class*="st-key-idx"] button {justify-content: flex-start; text-align: left; background: transparent; border: none;
-  border-radius: 12px; padding: .85rem 1rem; min-height: 0; color: var(--ink); font-family: var(--title) !important;}
- [class*="st-key-idx"] button p {font-family: var(--title) !important; font-size: 1.12rem; font-weight: 700; text-align: left;}
- [class*="st-key-idx"] button > div {justify-content: flex-start; width: 100%;}
- [class*="st-key-idx"] button:hover {background: var(--panel); color: var(--amber);}
+/* Lignes du sommaire = boutons discrets */
+[class*="st-key-idx"] button {justify-content: flex-start !important; text-align: left; background: transparent !important;
+  border: none !important; border-radius: 10px !important; padding: .55rem .9rem !important; min-height: 0;
+  color: var(--ink) !important; box-shadow: none !important;}
+[class*="st-key-idx"] button p {font-family: var(--title) !important; font-size: 1.08rem; font-weight: 600; text-align: left;}
+[class*="st-key-idx"] button > div {justify-content: flex-start; width: 100%;}
+[class*="st-key-idx"] button:hover {background: var(--panel) !important; color: var(--amber) !important;}
+[class*="st-key-idx"] button:hover p {color: var(--amber);}
 
 /* Page chapitre */
 .bignum {font-family: var(--title); font-weight: 800; font-size: 7rem; line-height: .8; color: transparent;
@@ -292,13 +296,14 @@ def home():
     ui.button(c, "Commencer  →", type="primary", on_click=go, args=(1,), key="start")
 
     romans = ["1", "2", "3", "4", "5"]
-    for p, r in zip(PARTS, romans):
-        st.markdown(f"<div class='part'><div class='roman'>{r}</div><div><div class='l'>{p['label']}</div>"
+    for k, (p, r) in enumerate(zip(PARTS, romans)):
+        st.markdown(f"<div class='sep {'first' if k == 0 else ''}'><span></span>✦<span></span></div>"
+                    f"<div class='part'><div class='roman'>{r}</div><div><div class='l'>{p['label']}</div>"
                     f"<div class='t'>{p['title']}</div></div></div>", unsafe_allow_html=True)
         for ch in chapters_of(p["id"]):
             a, b = st.columns([5, 4])
             with a:
-                ui.button(st, f"{ch['num']:02d}   {ch['icon']}  {ch['title']}", key=f"idx{ch['num']}",
+                ui.button(st, f"{ch['num']:02d}\u2003\u2002{ch['title']}", key=f"idx{ch['num']}",
                           on_click=go, args=(ch["num"],))
             b.markdown(f"<div class='row-tag'>{ch['tagline']}</div>", unsafe_allow_html=True)
 
