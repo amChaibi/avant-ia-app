@@ -7,6 +7,27 @@ import streamlit as st
 
 import ui
 from content import BOOK, PARTS, CHAPTERS, chapters_of, get_chapter
+
+# Valeurs de secours : l'application fonctionne même avec une ancienne version de content.py
+BOOK = dict(BOOK)
+BOOK["author"] = "Amine CHAÏBI"
+BOOK.setdefault("author_title", "Docteur en informatique · Spécialiste de l'apprentissage automatique")
+BOOK.setdefault("author_bio", [
+    "Docteur en informatique, spécialiste de l'apprentissage automatique (machine learning) et de la fouille de données. "
+    "Thèse soutenue en 2013 au Laboratoire d'informatique de Paris-Nord (LIPN), Université Paris 13, "
+    "sur l'apprentissage topologique non supervisé.",
+    "Il a enseigné l'algorithmique et les bases de données à l'université, avant de poursuivre son parcours "
+    "dans l'industrie, autour de la data science et de l'apprentissage automatique. Il a aussi publié des chroniques sur le Journal du Net.",
+    "L'idée du livre est née d'un atelier sur les algorithmes inspirés des fourmis : raconter les liens entre "
+    "l'intelligence humaine, la nature et l'IA, sans exiger la moindre connaissance technique.",
+])
+BOOK.setdefault("links", [
+    ("Publications scientifiques (DBLP)", "https://dblp.org/pid/116/6363"),
+    ("Chroniques sur le Journal du Net", "https://www.journaldunet.com/account/amine-chaibi-17708"),
+])
+_TITRES_DU_LIVRE = {1: "Un kilo et demi de mystère", 5: "Le jardinier de solutions"}
+for _c in CHAPTERS:
+    _c["title"] = _TITRES_DU_LIVRE.get(_c["num"], _c["title"])
 from demos import REGISTRY
 
 st.set_page_config(page_title=BOOK["title"], page_icon="🐜", layout="wide",
