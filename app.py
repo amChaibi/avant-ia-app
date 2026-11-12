@@ -286,8 +286,6 @@ def home():
                 "<div class='hero'>Comprendre l'IA <em>en la touchant du doigt.</em></div>"
                 f"<div class='lead'>{BOOK['subtitle']}. Chaque chapitre du livre devient une petite expérience "
                 "que l'on manipule soi-même.</div>"
-                f"<div class='byline'><div class='mono-av'>AC</div><div><b>{BOOK['author']}</b>"
-                f"<span>{BOOK['author_title']}</span></div></div>"
                 "<div class='meta'><div><b>5</b>parties</div><div><b>15</b>chapitres</div>"
                 "<div><b>15</b>expériences</div></div>", unsafe_allow_html=True)
     c, _ = st.columns([1, 3])
@@ -352,7 +350,7 @@ def about():
     links = " ".join(f"<a href='{u}' target='_blank'>{t} ↗</a>" for t, u in BOOK["links"])
     paras = "".join(f"<p>{p}</p>" for p in BOOK["author_bio"])
     st.markdown(f"<div class='about'><div class='kicker'>À propos de l'auteur</div>"
-                f"<div class='about-grid'><div class='mono-av big'>AC</div><div><div class='about-name'>{BOOK['author']}</div>"
+                f"<div class='about-grid'><div><div class='about-name'>{BOOK['author']}</div>"
                 f"<div class='about-title'>{BOOK['author_title']}</div>{paras}<div class='about-links'>{links}</div></div></div></div>",
                 unsafe_allow_html=True)
 
