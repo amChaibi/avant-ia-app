@@ -20,7 +20,7 @@ LINE = "#2A3442"
 INK = "#E8ECF2"
 BG = "#0F141B"
 PANEL = "#1B2330"
-FONT = "'Inter', 'Helvetica Neue', Arial, sans-serif"
+FONT = "'EB Garamond', Georgia, serif"
 
 
 # ═════════════════════════════ Outils communs ═════════════════════════════

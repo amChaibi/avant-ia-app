@@ -36,12 +36,12 @@ st.set_page_config(page_title=BOOK["title"], page_icon="🐜", layout="wide",
 # ───────────────────────────── Style : « observatoire de nuit » ─────────────────────────────
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500&display=swap');
 :root {
   --bg: #0F141B; --panel: #161D27; --panel2: #1B2330; --line: #263040; --ink: #E8ECF2; --muted: #8A94A6;
   --amber: #F2B544; --cyan: #5CC8D7;
-  --title: 'Manrope', 'Inter', 'Helvetica Neue', Arial, sans-serif;
-  --body: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --title: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+  --body: 'EB Garamond', Georgia, 'Times New Roman', serif;
 }
 html, body, .stApp, .stMarkdown, button, input, select, textarea, label, p {font-family: var(--body) !important;}
 .stApp {background: radial-gradient(1200px 600px at 85% -10%, rgba(242,181,68,0.08), transparent 60%),
@@ -245,6 +245,58 @@ html, body, .stApp, .stMarkdown, button, input, select, textarea, label, p {font
 .cat b {display: block; font-family: var(--title); font-size: 1.6rem; color: var(--ink);}
 .cat.tp {border-color: var(--amber);} .cat.fn {border-color: #FF6B6B;} .cat.fp {border-color: var(--cyan);}
 @media (max-width: 700px) {.machines {grid-template-columns: repeat(3, 1fr);} .cats {grid-template-columns: repeat(2, 1fr);}}
+
+/* ═══════════ Typographie de livre ═══════════ */
+html, body, .stApp {font-size: 18px;}
+.stApp p, .stApp li, .stApp label {font-feature-settings: "liga", "onum", "kern";}
+.brand {font-family: var(--title) !important; font-weight: 600 !important; font-size: 1.25rem !important; letter-spacing: .01em !important;}
+.brand span {font-style: italic;}
+.brand small {font-family: var(--body) !important; font-variant-caps: all-small-caps; letter-spacing: .08em; font-size: 1rem !important;}
+.kicker {font-family: var(--body) !important; text-transform: none !important; font-variant-caps: all-small-caps;
+         letter-spacing: .14em !important; font-size: 1rem !important; font-weight: 500 !important;}
+.kicker::before {display: none !important;}
+.hero {font-family: var(--title) !important; font-weight: 600 !important; letter-spacing: -0.01em !important; line-height: 1.05 !important;}
+.hero em {font-style: italic !important; background: none !important; -webkit-background-clip: initial !important;
+          background-clip: initial !important; color: var(--amber) !important; font-weight: 500;}
+.lead {font-family: var(--body) !important; font-style: italic; font-size: 1.3rem !important; color: #AEB6C2 !important;}
+.meta b {font-family: var(--title) !important; font-weight: 600 !important; font-size: 2rem !important;}
+.meta {font-variant-caps: all-small-caps; letter-spacing: .08em;}
+
+.sep {font-size: 1.5rem !important; opacity: .9 !important;}
+.part .roman {font-family: var(--title) !important; font-style: italic; font-weight: 600 !important; font-size: 3rem !important;}
+.part .l {text-transform: none !important; font-variant-caps: all-small-caps; letter-spacing: .14em !important; font-size: 1rem !important;}
+.part .t {font-family: var(--title) !important; font-weight: 600 !important; font-size: 1.75rem !important;}
+[class*="st-key-idx"] button p {font-family: var(--title) !important; font-size: 1.3rem !important; font-weight: 600 !important; line-height: 1.25;}
+.row-tag {font-style: italic; font-size: 1rem !important; padding-top: .8rem !important;}
+
+.bignum {font-family: var(--title) !important; font-style: italic; font-weight: 500 !important; font-size: 5.2rem !important;
+         color: var(--amber) !important; -webkit-text-stroke: 0 !important; letter-spacing: 0 !important; opacity: .9;}
+.chaplabel {font-variant-caps: all-small-caps; letter-spacing: .16em; color: var(--muted); text-align: right; font-size: 1rem;}
+.panel .k, .example .k, .take span, .scenario span, .result-label, .neo .who, .panel.nature .k, .panel.idea .k {
+  text-transform: none !important; font-variant-caps: all-small-caps; letter-spacing: .14em !important; font-size: .95rem !important;}
+.panel .v, .example, .tl .t, .explain .eb, .take, .scenario {font-size: 1.15rem !important; line-height: 1.7 !important;}
+.panel.nature .v::first-letter, .example .first::first-letter {
+  font-family: var(--title); float: left; font-size: 3.6rem; line-height: .82; padding: .3rem .5rem 0 0; color: var(--cyan); font-weight: 600;}
+.panel.idea .v::first-letter {font-family: var(--title); float: left; font-size: 3.6rem; line-height: .82;
+  padding: .3rem .5rem 0 0; color: var(--amber); font-weight: 600;}
+.neo {font-style: italic; font-size: 1.15rem !important;}
+.tl::before {font-family: var(--title) !important; font-style: italic; font-size: 1.05rem !important;}
+.today {font-family: var(--title) !important; font-style: italic; font-weight: 500 !important; font-size: 1.85rem !important;
+        line-height: 1.35 !important; text-align: center; padding: 2.6rem 2.4rem !important;}
+.today::before {content: "❦"; display: block; font-style: normal; color: var(--amber); font-size: 1.4rem; opacity: .85; margin-bottom: 1rem;}
+.explain .et, .mini-t, .duel {font-family: var(--title) !important; font-weight: 600 !important; font-size: 1.45rem !important;}
+.result-value {font-family: var(--title) !important; font-weight: 600 !important; font-size: 1.9rem !important;}
+.quote {font-family: var(--title) !important; font-style: italic; font-weight: 500 !important; font-size: 1.9rem !important;}
+.stTabs [data-baseweb="tab"] p {font-family: var(--title) !important; font-weight: 600 !important; font-size: 1.2rem !important;}
+.stButton button p {font-family: var(--body) !important;}
+.stButton button[kind="primary"] p {font-weight: 600;}
+.footer {font-style: italic; font-size: .95rem !important;}
+.footer b {font-style: normal; font-variant-caps: all-small-caps; letter-spacing: .06em;}
+svg text {font-family: 'EB Garamond', Georgia, serif;}
+[data-testid="stMarkdownContainer"], [data-testid="stWidgetLabel"], [data-testid="stCaptionContainer"],
+[data-baseweb="select"], [data-baseweb="radio"], .stAlert, .stDataFrame {font-family: var(--body) !important;}
+[class*="st-key-idx"] button p {white-space: normal !important; overflow: visible !important; text-overflow: clip !important;}
+[class*="st-key-idx"] button div {overflow: visible !important;}
 </style>
 """, unsafe_allow_html=True)
 
@@ -261,6 +313,9 @@ if "page" not in st.session_state:
     except ValueError:
         st.session_state.page = 0
 page = st.session_state.page if any(c["num"] == st.session_state.page for c in CHAPTERS) else 0
+
+
+ROMAN = {i + 1: r for i, r in enumerate("I II III IV V VI VII VIII IX X XI XII XIII XIV XV".split())}
 
 
 def md(text):
@@ -295,13 +350,13 @@ def home():
     c, _ = st.columns([1, 3])
     ui.button(c, "Commencer  →", type="primary", on_click=go, args=(1,), key="start")
 
-    romans = ["1", "2", "3", "4", "5"]
+    romans = ["I", "II", "III", "IV", "V"]
     for k, (p, r) in enumerate(zip(PARTS, romans)):
-        st.markdown(f"<div class='sep {'first' if k == 0 else ''}'><span></span>✦<span></span></div>"
+        st.markdown(f"<div class='sep {'first' if k == 0 else ''}'><span></span>❦<span></span></div>"
                     f"<div class='part'><div class='roman'>{r}</div><div><div class='l'>{p['label']}</div>"
                     f"<div class='t'>{p['title']}</div></div></div>", unsafe_allow_html=True)
         for ch in chapters_of(p["id"]):
-            a, b = st.columns([5, 4])
+            a, b = st.columns([6, 4])
             with a:
                 ui.button(st, f"{ch['num']:02d}\u2003\u2002{ch['title']}", key=f"idx{ch['num']}",
                           on_click=go, args=(ch["num"],))
@@ -315,7 +370,8 @@ def chapter(c):
         st.markdown(f"<div class='kicker'>{next(p['title'] for p in PARTS if p['id'] == c['part'])}</div>"
                     f"<div class='hero'>{c['title']}</div><div class='lead'>{c['tagline']}</div>",
                     unsafe_allow_html=True)
-    num.markdown(f"<div class='bignum' style='text-align:right'>{c['num']:02d}</div>", unsafe_allow_html=True)
+    num.markdown(f"<div class='chaplabel'>Chapitre</div><div class='bignum' style='text-align:right'>{ROMAN[c['num']]}</div>",
+                 unsafe_allow_html=True)
     st.markdown("<div style='height:1.6rem'></div>", unsafe_allow_html=True)
 
     t1, t2, t3, t4 = st.tabs(["Le principe", "Comment ça marche", f"{c['icon']}  Expérience guidée", "Aujourd'hui"])
