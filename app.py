@@ -30,6 +30,26 @@ html, body, .stApp, .stMarkdown, button, input, select, textarea, label, p {font
 [data-testid="stHeader"] {background: transparent; height: 0;}
 .block-container {max-width: 1120px; padding-top: 1.6rem; padding-bottom: 5rem;}
 
+/* Auteur */
+.brand small {font-family: var(--body); font-weight: 500; font-size: .85rem; color: var(--muted); letter-spacing: .02em;}
+.byline {display: flex; gap: .9rem; align-items: center; margin: 1.4rem 0 .2rem;}
+.byline b {display: block; font-family: var(--title); font-size: 1.05rem; color: var(--ink); letter-spacing: .03em;}
+.byline span {font-size: .88rem; color: var(--muted);}
+.mono-av {width: 46px; height: 46px; flex: 0 0 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+          font-family: var(--title); font-weight: 800; color: var(--bg); background: linear-gradient(135deg, var(--amber), var(--cyan));}
+.mono-av.big {width: 84px; height: 84px; flex-basis: 84px; font-size: 1.6rem;}
+.about {margin-top: 4rem; padding: 2rem; border-radius: 22px; background: var(--panel); border: 1px solid var(--line);}
+.about-grid {display: flex; gap: 1.6rem; align-items: flex-start; margin-top: 1rem;}
+.about-name {font-family: var(--title); font-weight: 800; font-size: 1.6rem; color: var(--ink); letter-spacing: .02em;}
+.about-title {color: var(--amber); font-size: .92rem; margin-bottom: .9rem;}
+.about p {color: #C9D1DC; line-height: 1.65; font-size: 1rem; margin: 0 0 .7rem;}
+.about-links {display: flex; gap: 1.2rem; flex-wrap: wrap; margin-top: .6rem;}
+.about-links a {color: var(--cyan) !important; text-decoration: none; font-weight: 600; font-size: .92rem;}
+.footer {margin-top: 3.5rem; padding-top: 1.4rem; border-top: 1px solid var(--line); text-align: center;
+         font-size: .82rem; color: var(--muted); line-height: 1.7;}
+.footer b {color: var(--ink); font-weight: 600;}
+@media (max-width: 700px) {.about-grid {flex-direction: column;}}
+
 /* Barre du haut */
 .brand {font-family: var(--title); font-weight: 800; font-size: 1.05rem; color: var(--ink); letter-spacing: -0.01em;
         padding-top: .45rem;}
@@ -226,7 +246,8 @@ def md(text):
 
 def topbar():
     left, mid, b1, b2, b3 = st.columns([5, 3, 1.3, 1, 1])
-    left.markdown("<div class='brand'>Avant l'IA, il y avait nous, <span> par Amine CHAÏBI</span></div>", unsafe_allow_html=True)
+    left.markdown("<div class='brand'>Avant l'IA, <span>il y avait nous</span>"
+                  f"<small> · {BOOK['author']}</small></div>", unsafe_allow_html=True)
     if page:
         part = next(p for p in PARTS if p["id"] == get_chapter(page)["part"])
         mid.markdown(f"<div class='brand' style='font-weight:500;color:#8A94A6;font-size:.9rem;padding-top:.6rem'>"
@@ -242,8 +263,10 @@ def topbar():
 def home():
     st.markdown("<div class='kicker'>Le livre, en version interactive</div>"
                 "<div class='hero'>Comprendre l'IA <em>en la touchant du doigt.</em></div>"
-                f"<div class='lead'>{BOOK['subtitle']}. Chaque chapitre du livre d'{BOOK['author']} "
-                "devient une petite expérience que l'on manipule soi-même.</div>"
+                f"<div class='lead'>{BOOK['subtitle']}. Chaque chapitre du livre devient une petite expérience "
+                "que l'on manipule soi-même.</div>"
+                f"<div class='byline'><div class='mono-av'>AC</div><div><b>{BOOK['author']}</b>"
+                f"<span>{BOOK['author_title']}</span></div></div>"
                 "<div class='meta'><div><b>5</b>parties</div><div><b>15</b>chapitres</div>"
                 "<div><b>15</b>expériences</div></div>", unsafe_allow_html=True)
     c, _ = st.columns([1, 3])
@@ -304,8 +327,25 @@ def chapter(c):
         ui.button(right, "Retour au sommaire", on_click=go, args=(0,), type="primary", key="end")
 
 
+def about():
+    links = " ".join(f"<a href='{u}' target='_blank'>{t} ↗</a>" for t, u in BOOK["links"])
+    paras = "".join(f"<p>{p}</p>" for p in BOOK["author_bio"])
+    st.markdown(f"<div class='about'><div class='kicker'>À propos de l'auteur</div>"
+                f"<div class='about-grid'><div class='mono-av big'>AC</div><div><div class='about-name'>{BOOK['author']}</div>"
+                f"<div class='about-title'>{BOOK['author_title']}</div>{paras}<div class='about-links'>{links}</div></div></div></div>",
+                unsafe_allow_html=True)
+
+
+def footer():
+    st.markdown(f"<div class='footer'><b>{BOOK['title']}</b> — {BOOK['subtitle']}<br>"
+                f"Un livre d'<b>{BOOK['author']}</b> · © 2026. Tous droits réservés.</div>",
+                unsafe_allow_html=True)
+
+
 topbar()
 if page:
     chapter(get_chapter(page))
 else:
     home()
+    about()
+footer()

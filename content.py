@@ -8,7 +8,21 @@ Pour modifier un texte, il suffit d'éditer ce fichier.
 BOOK = {
     "title": "Avant l'IA, il y avait nous",
     "subtitle": "Comment la nature et notre intelligence ont inspiré les machines d'aujourd'hui",
-    "author": "Amine Chaïbi",
+    "author": "Amine CHAÏBI",
+    "author_title": "Docteur en informatique · Spécialiste de l'apprentissage automatique",
+    "author_bio": [
+        "Docteur en informatique, spécialiste de l'apprentissage automatique (machine learning) et de la fouille de données. "
+        "Thèse soutenue en 2013 au Laboratoire d'informatique de Paris-Nord (LIPN), Université Paris 13, "
+        "sur l'apprentissage topologique non supervisé.",
+        "Il a enseigné l'algorithmique et les bases de données à l'université, avant de poursuivre son parcours "
+        "dans l'industrie, autour de la data science et de l'apprentissage automatique. Il a aussi publié des chroniques sur le Journal du Net.",
+        "L'idée du livre est née d'un atelier sur les algorithmes inspirés des fourmis : raconter les liens entre "
+        "l'intelligence humaine, la nature et l'IA, sans exiger la moindre connaissance technique.",
+    ],
+    "links": [
+        ("Publications scientifiques (DBLP)", "https://dblp.org/pid/116/6363"),
+        ("Chroniques sur le Journal du Net", "https://www.journaldunet.com/account/amine-chaibi-17708"),
+    ],
 }
 
 PARTS = [
@@ -23,9 +37,9 @@ CHAPTERS = [
     # ───────────────────────────── PARTIE I ─────────────────────────────
     {
         "num": 1, "part": 1, "icon": "🧠",
-        "title": "Trois kilos de mystère",
+        "title": "Un kilo et demi de mystère",
         "tagline": "Comment le cerveau a inspiré une nouvelle manière de concevoir les machines.",
-        "nature": "Notre cerveau compte environ 86 milliards de neurones. Aucun d'eux n'est intelligent "
+        "nature": "Un kilo et demi : c'est à peu près le poids de notre cerveau. Il compte environ 86 milliards de neurones. Aucun d'eux n'est intelligent "
                   "seul : chacun reçoit des signaux, les additionne et décide de « s'allumer » ou non. "
                   "L'intelligence naît de leurs connexions.",
         "idea": "Et si, au lieu d'écrire toutes les règles à la main, on construisait une machine faite "
@@ -109,8 +123,8 @@ CHAPTERS = [
     },
     {
         "num": 5, "part": 2, "icon": "🧬",
-        "title": "Mille essais pour une bonne idée",
-        "tagline": "Mutation, sélection, adaptation : chercher comme le vivant.",
+        "title": "Le jardinier de solutions",
+        "tagline": "Laisser l'ordinateur faire pousser des solutions que personne n'aurait dessinées.",
         "nature": "Dans le vivant, chaque génération mélange et modifie légèrement ce qu'elle hérite. "
                   "Les variantes les mieux adaptées à leur environnement se transmettent davantage.",
         "idea": "Faire « évoluer » des solutions au lieu de les calculer : on crée une population d'essais, "
@@ -123,7 +137,7 @@ CHAPTERS = [
         ],
         "example": "Retrouver une phrase cachée lettre par lettre : au départ, du charabia. "
                    "Quelques centaines de générations plus tard, la phrase apparaît — sans qu'on l'ait jamais écrite.",
-        "today": "Ces algorithmes ont conçu des formes d'antennes, optimisé des ailes d'avion "
+        "today": "Une antenne conçue ainsi a volé sur le satellite ST5 de la NASA en 2006. Ces algorithmes optimisent aussi des emplois du temps, des formes d'ailes "
                  "et aident à régler les paramètres d'autres IA.",
         "demo": "genetic",
     },

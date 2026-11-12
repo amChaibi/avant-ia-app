@@ -375,7 +375,7 @@ def ants():
                     "Personne n'a décidé : le pont court a gagné parce que ses fourmis reviennent plus vite et l'odeur s'y accumule.")
     takeaway("Trois règles locales suffisent : <b>suivre l'odeur, la renforcer, la laisser s'évaporer</b>. "
              "Les algorithmes de colonies de fourmis copient exactement ce mécanisme pour trouver des tournées de livraison courtes.")
-    with st.expander("Et sur un vrai problème ? Une tournée de livraison"):
+    with st.expander("Et sur un vrai problème ? La tournée de Léa, la livreuse"):
         _tsp_block()
 
 
