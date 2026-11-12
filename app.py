@@ -366,5 +366,4 @@ if page:
     chapter(get_chapter(page))
 else:
     home()
-    about()
 footer()
